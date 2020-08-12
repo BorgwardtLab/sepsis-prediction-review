@@ -22,7 +22,7 @@ def clean_rating(series):
 
 if __name__ == "__main__":
 
-    data_path = os.path.join('data', 'annotated_query1.csv')
+    data_path = os.path.join('data', 'consensus_query1.csv')
 
     df = pd.read_csv(data_path)
 
@@ -36,4 +36,3 @@ if __name__ == "__main__":
     #compute kappa:
     kappa = k(r_MM, r_CRJ)
     print(f'Kappa = {kappa}')
-
