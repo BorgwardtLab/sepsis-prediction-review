@@ -1,0 +1,15 @@
+Categories,Items,Description,Reported
+Unmet need,Limits in current non-machine-learning approach,"Low diagnostic accuracy, low human-level prediction accuracy or prolonged diagnostic procedure",Yes/No
+Reproducibility,Prevalence of Sepsis,The proportion of patients that sustained a sepsis out of the entire study cohort.,Yes/No
+,Data avalability,Is the data used in the study publicy available?,Yes/No
+,Feature engineering methods,How features were generated before model training,Yes/No
+,Code for data wranling and analysis,"Code describing the details of the cleaning, preprocessing, and analysis of the data.",Yes/No
+,Code of label,Code describing sepsis label generation,Yes/No
+,Platforms/packages,Both platforms and packages should be reported,Yes/No
+,Hyperparameters,All hyperparameters which are needed for study replication,Yes/No
+Robustness,Sample size > 50,"Sepsis case sample size < 50 are required for the interpretation, power, and validity of machine learning methods.",Yes/No
+,Valid methods for over-fitting,"Valid methods for unbiased performance assessment (or methods ""against"" overfitting)",Yes/No
+,Stability of results,Calculated variation in the validation statistics,Yes/No
+Generalizability,External data validation,Validation in settings different from the research framework,Yes/No
+Clinical significance,Predictors explanation,Explanation (biological or quantification) of the importance of each predictor,Yes/No
+,Suggested clinical use,Clinical usability and requirements (e.g. what is still necessary for making deployment possible),Yes/No

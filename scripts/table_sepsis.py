@@ -14,22 +14,22 @@ all_cols = ['Study', 'Dataset', 'Study type', 'Prediction task',
        'External Validation', 'Missing Data Handling', 'Data Types',
        'Number of variables', 'Circularity addressed', 'Comments (optional)']
 
-used_cols = ['Study', 'Dataset', 
-       'Sepsis definition', 'number of sepsis encounters',
-       'prevalence (%)', 'Used cohort available',
-       'Code for analysis', 'Code for label', 'Model', 
-       'AUC', 'Hours before Onset ', 
-       'External Validation', 
-       'Data Types', 'Number of variables']
+used_cols = ['Study', 'Prediction task',
+       'Sepsis definition', 'Sepsis definition exact',
+       'Case/Control alignment', 'Inclusion Criteria']
 
-f = 'data/study_overview.csv' #'data/study_overview5.csv'
+f = 'data/study_overview.csv'
 df = pd.read_csv(f, header=1)
 
 df = df[used_cols]
 
-# convert n_sepsis to int despite nans:
-df['number of sepsis encounters'] = df['number of sepsis encounters'].astype(pd.Int32Dtype())
-df['prevalence (%)'] = df['prevalence (%)'].round(1) 
+df = df.drop(columns='Sepsis definition')
+df = df.rename(columns = {'Sepsis definition exact': 'Sepsis definition'})
+
+df['Inclusion Criteria'] = df['Inclusion Criteria'].str.replace('>=', '$\\\geq$')
+df['Inclusion Criteria'] = df['Inclusion Criteria'].str.replace('>', '$>$')
+
+#df['Inclusion Criteria'] = df['Inclusion Criteria']
 
 df = df.sort_values(by=['Study'])
 df = df.reset_index(drop=True)
@@ -43,7 +43,8 @@ for col in df.columns:
         continue
 
 #to ensure full strings are used in .to_latex() -- and not truncated ones:
-pd.options.display.max_colwidth = 90
+pd.options.display.max_colwidth = 300
 
-df.to_latex('data/table1.tex')
+
+df.to_latex('data/table_sepsis.tex', escape=False)
 
